@@ -1,0 +1,19 @@
+{
+    "widget": {
+        "title": "Kimi Code Quota",
+        "weekly": "Weekly Quota",
+        "fiveHour": "5-Hour Quota",
+        "refresh": "Refresh",
+        "settings": "Settings...",
+        "testConnection": "Test Connection",
+        "showWeekly": "Show Weekly Quota",
+        "show5Hour": "Show 5-Hour Quota",
+        "apiEndpoint": "API Endpoint:",
+        "refreshInterval": "Refresh Interval (s):",
+        "reset": "Reset: %1",
+        "requests": "%1 / %2 requests",
+        "connectionFailed": "Connection failed",
+        "apiError": "API Error: %1",
+        "parseError": "Parse error: %1"
+    }
+}

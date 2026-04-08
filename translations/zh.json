@@ -1,0 +1,19 @@
+{
+    "widget": {
+        "title": "Kimi Code 配额",
+        "weekly": "每周配额",
+        "fiveHour": "5小时配额",
+        "refresh": "刷新",
+        "settings": "设置...",
+        "testConnection": "测试连接",
+        "showWeekly": "显示每周配额",
+        "show5Hour": "显示5小时配额",
+        "apiEndpoint": "API 地址:",
+        "refreshInterval": "刷新间隔 (秒):",
+        "reset": "重置时间: %1",
+        "requests": "%1 / %2 次请求",
+        "connectionFailed": "连接失败",
+        "apiError": "API 错误: %1",
+        "parseError": "解析错误: %1"
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "name": "com.ericfl.imicode.quota",
+    "version": "1.2.0",
+    
+    "title": {
+        "en": "Kimi Code Quota Extension",
+        "zh": "Kimi Code 配额扩展"
+    },
+
+    "description":  {
+        "en": "Display Kimi Code weekly and 5-hour quota information",
+        "zh": "显示 Kimi Code 每周和5小时配额信息"
+    },
+
+    "homepage": "https://github.com/EricFL1998/KimiQuota-For-SAOUtils",
+
+    "author": {
+        "name": "EricFL1998",
+        "email": "",
+        "url": ""
+    },
+
+    "resources": [
+        {
+            "location": "/widget",
+            "catalog": "widget",
+            "title": {
+                "en": "Kimi Code Quota",
+                "zh": "Kimi Code 配额"
+            },
+            "icon": "icons/quota.png",
+            "preview": "preview.png",
+            "entry": "qml/KimiCodeQuota.qml"
+        }
+    ]
+}
