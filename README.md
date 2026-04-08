@@ -20,9 +20,9 @@
 
 ### 第一步：安装 Kimi CLI
 
-打开Poweshell并运行：
+打开命令提示符（CMD）并运行：
 ```bash
-irm https://code.kimi.com/install.ps1 | iex
+pip install kimi-cli
 kimi login
 ```
 
@@ -30,8 +30,10 @@ kimi login
 
 ### 第二步：安装挂件
 
-1. 复制 `kimi-code-quota` 文件夹到 SAO Utils 2 的 Packages 目录
-   或者下载打包好的扩展
+1. 复制 `kimi-code-quota` 文件夹到 SAO Utils 2 的 Packages 目录：
+   ```
+   C:\Program Files\SAO Utils 2\Packages\
+   ```
 2. 重启 SAO Utils 2
 
 ### 第三步：使用挂件
@@ -75,6 +77,24 @@ kimi login
 - 令牌存储位置：`%USERPROFILE%\.kimi\credentials\kimi-code.json`
 - 无需外部 Python 依赖（使用标准库）
 - 自动刷新间隔可在设置中配置
+
+## 界面说明
+
+| 图标 | 含义 |
+|------|------|
+| \u263d | Kimi 图标 |
+| \u1f4c5 | 每周用量 |
+| \u23f0 | 速率限制 |
+| \u21bb | 刷新按钮 |
+| 绿色指示灯 | 已连接 |
+| 黄色指示灯 | 加载中 |
+| 红色指示灯 | 未登录 |
+
+## 颜色说明
+
+- **绿色/青色**: 用量正常 (<50%)
+- **黄色**: 用量中等 (50-80%)
+- **红色/粉色**: 用量较高 (>80%)
 
 ## 致谢
 

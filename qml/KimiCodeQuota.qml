@@ -322,10 +322,25 @@ T.Widget {
     
     Timer {
         id: autoRefreshTimer
-        interval: refreshIntervalMins * 60 * 1000
-        running: refreshIntervalMins > 0 && !needsLogin
+        interval: Math.max(60000, (widget.settings.refreshIntervalMins || 5) * 60 * 1000)
         repeat: true
         onTriggered: fetchQuotaData()
+    }
+    
+    // Restart timer when interval setting changes
+    onRefreshIntervalMinsChanged: {
+        if (autoRefreshTimer.running) {
+            autoRefreshTimer.restart()
+        }
+    }
+    
+    // Start timer when login issue is resolved
+    onNeedsLoginChanged: {
+        if (!needsLogin && refreshIntervalMins > 0) {
+            autoRefreshTimer.start()
+        } else if (needsLogin) {
+            autoRefreshTimer.stop()
+        }
     }
     
     // Delay initial read to allow file to be created
@@ -348,6 +363,10 @@ T.Widget {
                 } else {
                     // File doesn't exist, auto-fetch
                     fetchQuotaData()
+                }
+                // Start auto-refresh timer after initial data check
+                if (refreshIntervalMins > 0 && !needsLogin) {
+                    autoRefreshTimer.start()
                 }
             }
         }
