@@ -30,10 +30,7 @@ kimi login
 
 ### 第二步：安装挂件
 
-1. 复制 `kimi-code-quota` 文件夹到 SAO Utils 2 的 Packages 目录：
-   ```
-   C:\Program Files\SAO Utils 2\Packages\
-   ```
+1. 复制 `kimi-code-quota` 文件夹到 SAO Utils 2 的 Packages 目录
    或者下载打包好的扩展
 2. 重启 SAO Utils 2
 
