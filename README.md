@@ -34,6 +34,7 @@ kimi login
    ```
    C:\Program Files\SAO Utils 2\Packages\
    ```
+   或者下载打包好的扩展
 2. 重启 SAO Utils 2
 
 ### 第三步：使用挂件
