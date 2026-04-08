@@ -20,9 +20,9 @@
 
 ### 第一步：安装 Kimi CLI
 
-打开命令提示符（CMD）并运行：
+打开Poweshell并运行：
 ```bash
-pip install kimi-cli
+irm https://code.kimi.com/install.ps1 | iex
 kimi login
 ```
 
