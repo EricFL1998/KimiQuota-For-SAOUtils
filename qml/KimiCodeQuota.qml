@@ -15,6 +15,8 @@ T.Widget {
     property bool isLoading: false
     property string statusMessage: "点击刷新"
     property bool needsLogin: false
+    property var lastLoginAttempt: 0
+    readonly property int loginCooldownMs: 30000  // 30 seconds cooldown
     
     // Paths
     readonly property string outputPath: Qt.resolvedUrl("../server/quota_output.json").toString()
@@ -52,6 +54,10 @@ T.Widget {
         Action {
             text: "立即刷新"
             onTriggered: fetchQuotaData()
+        }
+        Action {
+            text: "登录 Kimi"
+            onTriggered: runKimiLogin()
         }
     }
     
@@ -340,6 +346,49 @@ T.Widget {
             autoRefreshTimer.start()
         } else if (needsLogin) {
             autoRefreshTimer.stop()
+            // Auto-trigger background login with cooldown
+            autoLoginTimer.start()
+        }
+    }
+    
+    function runKimiLogin() {
+        var now = Date.now()
+        if (now - lastLoginAttempt < loginCooldownMs) {
+            console.log("Login cooldown active, skipping auto-login")
+            return
+        }
+        lastLoginAttempt = now
+        
+        statusMessage = "正在自动登录..."
+        console.log("Auto-running kimi login in background...")
+        
+        // Run kimi login with cmd /c - runs command and auto-closes
+        NVG.SystemCall.execute("cmd.exe", "/c", "kimi login")
+        
+        // Wait a bit for login to complete then retry fetching data
+        loginRetryTimer.start()
+    }
+    
+    // Timer to delay auto-login slightly to avoid immediate popup on startup
+    Timer {
+        id: autoLoginTimer
+        interval: 500
+        repeat: false
+        onTriggered: {
+            if (needsLogin) {
+                runKimiLogin()
+            }
+        }
+    }
+    
+    // Timer to retry fetching data after login attempt
+    Timer {
+        id: loginRetryTimer
+        interval: 3000  // Wait 3 seconds for login to complete
+        repeat: false
+        onTriggered: {
+            console.log("Retrying fetch after login attempt...")
+            fetchQuotaData()
         }
     }
     
